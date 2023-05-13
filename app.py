@@ -10,7 +10,7 @@ from flask import Flask, request
 from PIL import Image
 import os
 
-app = Flask("Leaf Disease")
+app = Flask(__name__)
 
 def train_model():
     data = 'inputs/PlantVillage'
