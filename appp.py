@@ -1,9 +1,9 @@
-import numpy as np
-import pandas as pd
+import numpy as np # linear algebra
+import pandas as pd # data processing, CSV file I/O (e.g. pd.read_csv)
 import tensorflow as tf
 import cv2
-from tensorflow import keras
-from keras.models import Sequential
+from tensorflow import keras 
+from keras.models import Sequential 
 from keras import layers
 from keras.preprocessing.image import ImageDataGenerator as IDG
 from flask import Flask, request
@@ -105,6 +105,7 @@ def train_model():
 
 @app.route('/upload', methods=['POST'])
 def get_prediction():
+
     if 'image' not in request.files:
         return 'No image file uploaded', 400
 
@@ -133,21 +134,4 @@ model_path = '2st.h5'
 if not (os.path.exists(model_path)):
     train_model()
 else:
-    if __name__ == "__main__":
-        from gunicorn.app.base import BaseApplication
-
-        class StandaloneApplication(BaseApplication):
-            def __init__(self, app, options=None):
-                self.options = options or {}
-                self.application = app
-                super().__init__()
-
-            def load_config(self):
-                for key, value in self.options.items():
-                    self.cfg.set(key, value)
-
-            def load(self):
-                return self.application
-
-
-        StandaloneApplication(app).run()
+    app.run()
