@@ -149,5 +149,9 @@ else:
             def load(self):
                 return self.application
 
+        options = {
+            'bind': '0.0.0.0:8000',
+            'workers': 1,
+        }
 
         StandaloneApplication(app).run()
