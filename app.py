@@ -131,7 +131,8 @@ def welcome():
 
 model_path = '2st.h5'
 if not (os.path.exists(model_path)):
-    train_model()
+    # train_model()
+    print("training Model")
 else:
     if __name__ == "__main__":
         from gunicorn.app.base import BaseApplication
